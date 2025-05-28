@@ -18,6 +18,8 @@ export class UserController {
     try {
       const data = req.body;
       const user = await this.userService.create(data);
+      console.log("Deu certo!");
+      console.log(data);
       return res.status(201).json(user);
     } catch (error) {
       if (error.code === '23505') {

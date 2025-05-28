@@ -26,7 +26,7 @@ import { authMiddleware } from '../middlewares/auth.middleware.js';
 const router = Router();
 
 router.use('/auth', authRoutes);
-router.use('/users', authMiddleware, userRoutes);
+router.use('/users', userRoutes);
 router.use('/professionals', authMiddleware, professionalRoutes);
 router.use('/clinics', authMiddleware, clinicRoutes);
 router.use('/registries', authMiddleware, registryRoutes);
