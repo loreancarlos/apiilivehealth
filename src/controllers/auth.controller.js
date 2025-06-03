@@ -10,7 +10,7 @@ export class AuthController {
     try {
       const { email, password } = req.body;
       const user = await this.authService.validateUserCredentials(email, password);
-      
+
       if (!user) {
         return res.status(401).json({ error: 'Invalid credentials' });
       }
@@ -41,7 +41,7 @@ export class AuthController {
     try {
       const { email, password } = req.body;
       const professional = await this.authService.validateProfessionalCredentials(email, password);
-      
+
       if (!professional) {
         return res.status(401).json({ error: 'Invalid credentials' });
       }
@@ -72,7 +72,7 @@ export class AuthController {
     try {
       const { email, password } = req.body;
       const clinic = await this.authService.validateClinicCredentials(email, password);
-      
+
       if (!clinic) {
         return res.status(401).json({ error: 'Invalid credentials' });
       }
