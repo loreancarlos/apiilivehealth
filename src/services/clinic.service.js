@@ -15,8 +15,7 @@ export class ClinicService {
       .insert({
         ...data,
         password: hashedPassword,
-        createdAt: db.fn.now(),
-        updatedAt: db.fn.now()
+        openingHours: JSON.stringify(data.openingHours)
       })
       .returning('*');
 

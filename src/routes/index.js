@@ -27,8 +27,8 @@ const router = Router();
 
 router.use('/auth', authRoutes);
 router.use('/users', userRoutes);
-router.use('/professionals', authMiddleware, professionalRoutes);
-router.use('/clinics', authMiddleware, clinicRoutes);
+router.use('/professionals', professionalRoutes);
+router.use('/clinics', clinicRoutes);
 router.use('/registries', authMiddleware, registryRoutes);
 router.use('/specialties', authMiddleware, specialtyRoutes);
 router.use('/categories', authMiddleware, categoryRoutes);
