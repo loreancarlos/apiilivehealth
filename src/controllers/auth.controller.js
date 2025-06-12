@@ -84,7 +84,7 @@ export class AuthController {
       const token = jwt.sign(
         {
           id: clinic.id,
-          corporateName: clinic.corporateName,
+          fantasyName: clinic.fantasyName,
           email: clinic.email,
           type: 'clinic'
         },

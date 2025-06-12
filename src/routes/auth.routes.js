@@ -7,7 +7,7 @@ const authController = new AuthController();
 
 authRoutes.post('/login', authController.login);
 authRoutes.post('/change-password', authMiddleware, authController.changePassword);
-authRoutes.post('/professional/login', authController.professionalLogin);
-authRoutes.post('/clinic/login', authController.clinicLogin);
+authRoutes.post('/login/professional', authController.professionalLogin);
+authRoutes.post('/login/clinic', authController.clinicLogin);
 
 export { authRoutes };
