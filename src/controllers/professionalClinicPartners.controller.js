@@ -14,6 +14,24 @@ export class ProfessionalClinicPartnersController {
       }
    }
 
+   clinicsList = async (req, res) => {
+      try {
+         const partners = await this.professionalClinicPartnersService.clinicsList(req.user.id);
+         return res.json(partners);
+      } catch (error) {
+         return res.status(500).json({ error: 'Internal server error' });
+      }
+   }
+
+   professionalsList = async (req, res) => {
+      try {
+         const partners = await this.professionalClinicPartnersService.professionalsList(req.user.id);
+         return res.json(partners);
+      } catch (error) {
+         return res.status(500).json({ error: 'Internal server error' });
+      }
+   }
+
    create = async (req, res) => {
       try {
          const data = req.body;
@@ -59,6 +77,30 @@ export class ProfessionalClinicPartnersController {
       try {
          await this.professionalClinicPartnersService.delete(req.params.id);
          return res.json({ message: 'Partnership deleted successfully' });
+      } catch (error) {
+         return res.status(500).json({ error: 'Internal server error' });
+      }
+   }
+
+   professionalPartnershipResponse = async (req, res) => {
+      try {
+         const partner = await this.professionalClinicPartnersService.professionalPartnershipResponse(req.params.id, req.body.clinicApproved);
+         if (!partner) {
+            return res.status(404).json({ error: 'Partnership not found' });
+         }
+         return res.json(partner);
+      } catch (error) {
+         return res.status(500).json({ error: 'Internal server error' });
+      }
+   }
+
+   clinicPartnershipResponse = async (req, res) => {
+      try {
+         const partner = await this.professionalClinicPartnersService.clinicPartnershipResponse(req.params.id, req.body.professionalApproved);
+         if (!partner) {
+            return res.status(404).json({ error: 'Partnership not found' });
+         }
+         return res.json(partner);
       } catch (error) {
          return res.status(500).json({ error: 'Internal server error' });
       }

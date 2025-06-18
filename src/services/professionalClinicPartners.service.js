@@ -3,13 +3,21 @@ import db from '../database/connection.js';
 export class ProfessionalClinicPartnersService {
   async list() {
     return db('professionalClinicPartners')
-      .select(
-        'professionalClinicPartners.*',
-        'professional.name as professionalName',
-        'clinic.fantasyName as clinicName'
-      )
-      .leftJoin('professional', 'professional.id', 'professionalClinicPartners.professionalId')
-      .leftJoin('clinic', 'clinic.id', 'professionalClinicPartners.clinicId')
+      .select('*')
+      .orderBy('professionalClinicPartners.createdAt', 'desc');
+  }
+
+  async clinicsList(id) {
+    return db('professionalClinicPartners')
+      .select('*')
+      .where('professionalId', id)
+      .orderBy('professionalClinicPartners.createdAt', 'desc');
+  }
+
+  async professionalsList(id) {
+    return db('professionalClinicPartners')
+      .select('*')
+      .where('clinicId', id)
       .orderBy('professionalClinicPartners.createdAt', 'desc');
   }
 
@@ -51,6 +59,26 @@ export class ProfessionalClinicPartnersService {
     await db('professionalClinicPartners')
       .where({ id })
       .delete();
+  }
+
+  async clinicPartnershipResponse(id, professionalApproved) {
+    const [partner] = await db('professionalClinicPartners')
+      .where({ id })
+      .update({ professionalApproved })
+      .returning('*');
+
+    if (!partner) return null;
+    return this.findById(partner.id);
+  }
+
+  async professionalPartnershipResponse(id, clinicApproved) {
+    const [partner] = await db('professionalClinicPartners')
+      .where({ id })
+      .update({ clinicApproved })
+      .returning('*');
+
+    if (!partner) return null;
+    return this.findById(partner.id);
   }
 
   async toggleStatus(id) {

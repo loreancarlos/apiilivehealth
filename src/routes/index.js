@@ -43,7 +43,7 @@ router.use('/professional-reviews', authMiddleware, professionalReviewRoutes);
 router.use('/clinic-reviews', authMiddleware, clinicReviewRoutes);
 router.use('/professional-registries', authMiddleware, professionalRegistryRoutes);
 router.use('/professional-specialties', authMiddleware, professionalSpecialtyRoutes);
-router.use('/professional-clinic-partners', authMiddleware, professionalClinicPartnersRoutes);
+router.use('/partners', authMiddleware, professionalClinicPartnersRoutes);
 router.use('/services', authMiddleware, serviceRoutes);
 router.use('/service-tags', authMiddleware, serviceTagRoutes);
 router.use('/sales', authMiddleware, saleRoutes);
