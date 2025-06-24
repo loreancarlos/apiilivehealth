@@ -14,6 +14,15 @@ export class ProfessionalSpecialtyController {
       }
    }
 
+   listForProfessional = async (req, res) => {
+      try {
+         const specialties = await this.professionalSpecialtyService.listForProfessional(req.params.id);
+         return res.json(specialties);
+      } catch (error) {
+         return res.status(500).json({ error: 'Internal server error' });
+      }
+   }
+
    create = async (req, res) => {
       try {
          const data = req.body;

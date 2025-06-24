@@ -20,6 +20,7 @@ export class ServiceController {
          const service = await this.serviceService.create(data);
          return res.status(201).json(service);
       } catch (error) {
+         console.log(error);
          return res.status(500).json({ error: 'Internal server error' });
       }
    }
@@ -64,6 +65,18 @@ export class ServiceController {
    togglePromotion = async (req, res) => {
       try {
          const service = await this.serviceService.togglePromotion(req.params.id);
+         if (!service) {
+            return res.status(404).json({ error: 'Service not found' });
+         }
+         return res.json(service);
+      } catch (error) {
+         return res.status(500).json({ error: 'Internal server error' });
+      }
+   }
+
+   toggleServiceStatus = async (req, res) => {
+      try {
+         const service = await this.serviceService.toggleServiceStatus(req.params.id);
          if (!service) {
             return res.status(404).json({ error: 'Service not found' });
          }

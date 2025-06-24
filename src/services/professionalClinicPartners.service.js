@@ -68,6 +68,9 @@ export class ProfessionalClinicPartnersService {
       .returning('*');
 
     if (!partner) return null;
+
+    professionalApproved === "approved" && this.toggleStatus(id);
+
     return this.findById(partner.id);
   }
 
@@ -78,6 +81,9 @@ export class ProfessionalClinicPartnersService {
       .returning('*');
 
     if (!partner) return null;
+
+    clinicApproved === "approved" && this.toggleStatus(id);
+
     return this.findById(partner.id);
   }
 

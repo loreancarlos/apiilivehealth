@@ -6,10 +6,22 @@ export class ProfessionalSpecialtyService {
       .select(
         'professionalSpecialty.*',
         'professional.name as professionalName',
-        'specialty.name as specialtyName'
+        'specialty.name as specialtyName',
+        'specialty.id as specialtyId'
       )
       .leftJoin('professional', 'professional.id', 'professionalSpecialty.professionalId')
       .leftJoin('specialty', 'specialty.id', 'professionalSpecialty.specialtyId')
+      .orderBy('professionalSpecialty.specialtyDate', 'desc');
+  }
+  async listForProfessional(id) {
+    return db('professionalSpecialty')
+      .select(
+        'professionalSpecialty.*',
+        'specialty.name as specialtyName',
+        'specialty.id as specialtyId'
+      )
+      .leftJoin('specialty', 'specialty.id', 'professionalSpecialty.specialtyId')
+      .where('professionalId', id)
       .orderBy('professionalSpecialty.specialtyDate', 'desc');
   }
 

@@ -9,6 +9,6 @@ serviceRoutes.post('/', serviceController.create);
 serviceRoutes.get('/:id', serviceController.show);
 serviceRoutes.put('/:id', serviceController.update);
 serviceRoutes.delete('/:id', serviceController.delete);
-serviceRoutes.patch('/:id/toggle-promotion', serviceController.togglePromotion);
-
+serviceRoutes.patch('/:id/toggleIsPromotionOn', serviceController.togglePromotion);
+serviceRoutes.patch('/:id/toggleStatus', serviceController.toggleServiceStatus);
 export { serviceRoutes };

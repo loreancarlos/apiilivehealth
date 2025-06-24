@@ -6,6 +6,7 @@ const professionalSpecialtyController = new ProfessionalSpecialtyController();
 
 professionalSpecialtyRoutes.get('/', professionalSpecialtyController.list);
 professionalSpecialtyRoutes.post('/', professionalSpecialtyController.create);
+professionalSpecialtyRoutes.post('/:id', professionalSpecialtyController.listForProfessional);
 professionalSpecialtyRoutes.get('/:id', professionalSpecialtyController.show);
 professionalSpecialtyRoutes.put('/:id', professionalSpecialtyController.update);
 professionalSpecialtyRoutes.delete('/:id', professionalSpecialtyController.delete);

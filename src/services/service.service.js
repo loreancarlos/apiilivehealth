@@ -16,6 +16,7 @@ export class ServiceService {
    }
 
    async create(data) {
+      console.log(data);
       const [service] = await db('service')
          .insert({
             ...data,
@@ -81,4 +82,16 @@ export class ServiceService {
       if (!service) return null;
       return this.findById(service.id);
    }
+
+   async toggleServiceStatus(id) {
+    const [service] = await db('service')
+      .where({ id })
+      .update({
+        isActive: db.raw('NOT "isActive"')
+      })
+      .returning('*');
+
+    if (!service) return null;
+    return this.findById(service.id);
+  }
 }

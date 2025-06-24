@@ -42,7 +42,7 @@ router.use('/address-users', authMiddleware, addressUserRoutes);
 router.use('/professional-reviews', authMiddleware, professionalReviewRoutes);
 router.use('/clinic-reviews', authMiddleware, clinicReviewRoutes);
 router.use('/professional-registries', authMiddleware, professionalRegistryRoutes);
-router.use('/professional-specialties', authMiddleware, professionalSpecialtyRoutes);
+router.use('/professionalSpecialties', authMiddleware, professionalSpecialtyRoutes);
 router.use('/partners', authMiddleware, professionalClinicPartnersRoutes);
 router.use('/services', authMiddleware, serviceRoutes);
 router.use('/service-tags', authMiddleware, serviceTagRoutes);
